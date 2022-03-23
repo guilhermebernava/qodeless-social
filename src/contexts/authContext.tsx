@@ -6,7 +6,8 @@ import { auth, firebase } from "../services/firebase";
 type AuthContextType = {
   user: User | undefined;
   signInWithGoogle: () => Promise<void>;
-  signIn: () => Promise<void>;
+  CreateUser: (email:string, password:string, name:string) => Promise<void>;
+  LoginWithPassword: (email:string, password:string) => Promise<firebase.User>;
   signOut: () => Promise<void>;
 };
 
@@ -69,6 +70,33 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
 
+  async function CreateUser(email, password,name) {
+    await auth.createUserWithEmailAndPassword(email, password);
+    const user = await auth.signInWithEmailAndPassword(email, password);
+
+    await user.user.updateProfile({
+      displayName: name,
+    })
+  }
+
+  async function LoginWithPassword(email,password) {
+    try {
+      const user = await auth.signInWithEmailAndPassword(email, password);
+
+      setUser({
+        id: user.user.uid,
+        name: user.user.displayName,
+        avatar: user.user.photoURL,
+      });
+
+      return user.user;
+
+    } catch (ex) {
+      alert(ex);
+      return;
+    }
+  }
+
   async function signOut(){
     if(user){
       await auth.signOut();
@@ -76,27 +104,9 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
 
-  async function signIn() {
-    const result = await auth.signInWithEmailLink("https://qodeless-social.firebaseapp.com/__/auth/handler");
-
-    if (result.user) {
-      const { displayName, photoURL, uid } = result.user;
-
-      if (!displayName || !photoURL) {
-        throw new Error("Missing information from Google Account.");
-      }
-      setUser({
-        id: uid,
-        name: displayName,
-        avatar: photoURL,
-      });
-    }
-    
-  }
-
   return (
     //aqui você está passando o OBJETO que vai ir o USER a FUNCTION
-    <AuthContext.Provider value={{ user, signInWithGoogle, signIn , signOut}}>
+    <AuthContext.Provider value={{ user, signInWithGoogle, CreateUser,LoginWithPassword , signOut}}>
       {props.children}
     </AuthContext.Provider>
   );

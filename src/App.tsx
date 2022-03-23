@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LoginPage } from "./pages/login";
-import { Home } from "./pages/home";
+import { LoginPage } from "./pages/login/login";
+import { Home } from "./pages/home/home";
 import { AuthContextProvider } from "./contexts/authContext";
 
 function App() {
