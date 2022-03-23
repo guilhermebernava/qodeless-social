@@ -5,26 +5,22 @@ import { FormEvent, useState } from "react";
 import qodeless from "../../assets/images/qodeless-logo.png";
 import google from "../../assets/images/google.svg";
 
-import "./login.css";
+import styles from "./login.module.css";
+import { ModalCreateUser } from "../../components/modals/createUser/createUser";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const[openModal, setOpenModal] = useState(false);
+
   const navigator = useNavigate();
+  
   const { user, signInWithGoogle, CreateUser, LoginWithPassword } = useAuth();
 
   async function handleLogin() {
     if (!user) {
       await signInWithGoogle();
     }
-    navigator("/home");
-  }
-
-  async function handleCreateUser() {
-    await CreateUser(email, password, name);
-    setEmail("");
-    setPassword("");
     navigator("/home");
   }
 
@@ -45,10 +41,11 @@ export function LoginPage() {
   }
 
   return (
-    <div className="main">
-      <div className="box">
-        <img className="qodeless" src={qodeless} alt="qodeless-logo" />
-        <form className="form">
+    <div className={styles.modal}>
+    <div className={styles.main}>
+      <div className={styles.box}>
+        <img className={styles.qodeless} src={qodeless} alt="qodeless-logo" />
+        <form className={styles.form}>
           <p>Email</p>
           <input
             type="email"
@@ -65,18 +62,19 @@ export function LoginPage() {
           />
           <button onClick={handleLoginWithPassword}>Sign In</button>
         </form>
-        <div className="bottom">
+        <div className={styles.bottom}>
           <p>or continue with</p>
-          <button className="login" onClick={handleLogin}>
-            <img className="google" src={google} alt="google" />
+          <button className={styles.login} onClick={handleLogin}>
+            <img className={styles.google} src={google} alt="google" />
           </button>
           <p>
             Don't have an account yet?{" "}
-            <button onClick={handleCreateUser}>Register for free</button>
+            <button onClick={() => setOpenModal(true)}>Register for free</button>
           </p>
         </div>
       </div>
-      <div></div>
+    </div>
+    {openModal && <ModalCreateUser setOpenModal={setOpenModal}/>}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
+import qodeless from "../../assets/images/qodeless-logo.png";
+
 export function Home() {
   const navigator = useNavigate();
   const { user , signOut} = useAuth();
@@ -18,7 +20,7 @@ export function Home() {
       {user ? (
         <div>
           <h1>{user.name}</h1>
-          <img src={user.avatar} alt="fotinhos" />
+          <img  src={user.avatar ?? qodeless} alt="profile pic"/>
           <button onClick={handleLogout}>DESLOGAR</button>
         </div>
       ) : (

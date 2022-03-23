@@ -1,0 +1,93 @@
+.main {
+    width: 100%;
+    height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.609);
+}
+
+.closeBox{
+    align-self: flex-start;
+    justify-self: flex-start;
+    padding: 15px;
+}
+
+.close{
+    border: none;
+    background: none;
+    width: 20px;
+    height: 20px;
+    font-family: 'Roboto';
+}
+
+.close >  img {
+    width: 20px;
+    height: 20px;
+    fill: #FFF;
+}
+
+.box{
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(
+      rgba(221, 86, 145, 0.7),
+      rgba(172, 84, 178, 0.7),
+      rgba(136, 82, 203, 0.7)
+    );
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+  font-size: 14px;
+  text-align: center;
+  color: #494747;
+  margin-bottom: 3%;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  border: 2px solid #e3e3e3;
+  font-family: "Roboto";
+  font-weight: 200;
+}
+
+.import{
+color: #FFF;
+border: none;
+padding: 10px;
+align-self: flex-start;
+}
+
+.form > p {
+  color: #fff;
+  margin: 5px;
+}
+
+.form > button {
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 4%;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  border: none;
+  background: #17ceff;
+}

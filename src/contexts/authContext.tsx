@@ -1,12 +1,12 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { User } from "../types/user";
-import { auth, firebase } from "../services/firebase";
+import { auth, database, firebase, storage } from "../services/firebase";
 
 //#region TYPES CONTEXT
 type AuthContextType = {
   user: User | undefined;
   signInWithGoogle: () => Promise<void>;
-  CreateUser: (email:string, password:string, name:string) => Promise<void>;
+  CreateUser: (email:string, password:string, name:string, photo: any) => Promise<void>;
   LoginWithPassword: (email:string, password:string) => Promise<firebase.User>;
   signOut: () => Promise<void>;
 };
@@ -70,23 +70,34 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
 
-  async function CreateUser(email, password,name) {
+  async function CreateUser(email, password,name,photo) {
     await auth.createUserWithEmailAndPassword(email, password);
     const user = await auth.signInWithEmailAndPassword(email, password);
 
     await user.user.updateProfile({
       displayName: name,
     })
+
+    await storage.ref(`images/${user.user.uid}`).put(photo);
+
+    const pic = await storage.ref(`images`).child(user.user.uid).getDownloadURL();
+
+    setUser({
+      id: user.user.uid,
+      name: user.user.displayName,
+      avatar: pic,
+    });
   }
 
   async function LoginWithPassword(email,password) {
     try {
       const user = await auth.signInWithEmailAndPassword(email, password);
+      const photo = await storage.ref(`images`).child(user.user.uid).getDownloadURL();
 
       setUser({
         id: user.user.uid,
         name: user.user.displayName,
-        avatar: user.user.photoURL,
+        avatar: photo,
       });
 
       return user.user;
