@@ -27,12 +27,19 @@ div {
   height: 100vh;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .box {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 800px;
-  height: 600px;
+  width: 55%;
+  height: 70%;
   background: linear-gradient(
       rgba(221, 86, 145, 0.6),
       rgba(172, 84, 178, 0.6),
@@ -40,7 +47,7 @@ div {
     ),
     url(https://qodeless.io/wp-content/uploads/2021/09/Untitled.jpg) no-repeat center;
   border-radius: 50px;
-  padding: 50px 100px;
+  padding: 1% 2%;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -52,14 +59,14 @@ div {
 }
 
 .google {
-  width: 30px;
-  height: 30px;
+  width: 70%;
+  height: 70%;
   background: none;
 }
 
 .login {
-  width: 120px;
-  height: 50px;
+  width: 30%;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,12 +75,12 @@ div {
 }
 
 .form > input {
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
   color: #494747;
   margin-bottom: 3%;
-  width: 400px;
-  height: 50px;
+  width: 300%;
+  height: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,13 +100,14 @@ button{
 }
 
 .form > button {
-  font-size: 24px;
+  font-size: 25px;
   text-align: center;
   color: #fff;
   margin-bottom: 4%;
-  width: 400px;
-  height: 50px;
+  width: 300%;
+  height: 5vh;
   display: flex;
+  margin: 15%;
   justify-content: center;
   align-items: center;
   border-radius: 9999px;
@@ -110,15 +118,14 @@ button{
 .bottom {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
+  padding-bottom: 10%;
 }
 
 .bottom > p {
-  padding-left: 100px;
-  padding-bottom: 10px;
   text-align: center;
-  font-size: 14px;
+  font-size: 25px;
   color: #e3e3e3;
 }
 
@@ -134,8 +141,8 @@ button:hover {
 }
 .colorBox {
   display: block;
-  width: 1200px;
-  height: 600px;
+  width: 70%;
+  height: 40%;
   background: linear-gradient(
     90deg,
     rgba(221, 86, 145, 0.5) 0%,
@@ -144,9 +151,25 @@ button:hover {
   );
 }
 
-@media(max-width:568px){
-  .bottom{
-    width: fit-content;
+@media(max-width:800px){
+  .form > input{
+    width: 180%;
+  }
+  .form > button{
+    width: 180%;
+  }
+  
+}
+
+@media(min-height:1200px) {
+  .box{
+    height: 20%;
+  }
+}
+
+@media(min-height:200px) {
+  .box{
+    height: 38%;
   }
 }
 

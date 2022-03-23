@@ -67,8 +67,7 @@ export function LoginPage() {
             <img className={styles.google} src={google} alt="google" />
           </button>
           <p>
-            Don't have an account yet?{" "}
-            <button onClick={() => setOpenModal(true)}>Register for free</button>
+            Don't have an account yet? {" "}<button onClick={() => setOpenModal(true)}>Register for free</button>
           </p>
         </div>
       </div>
