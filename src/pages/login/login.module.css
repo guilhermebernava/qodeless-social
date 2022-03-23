@@ -23,9 +23,8 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2xvh;
   background: #fbfbfd;
-  height: 750px;
+  height: 100vh;
 }
 
 .box {

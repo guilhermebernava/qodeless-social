@@ -41,7 +41,6 @@ export function LoginPage() {
   }
 
   return (
-    <div className={styles.modal}>
     <div className={styles.main}>
       <div className={styles.box}>
         <img className={styles.qodeless} src={qodeless} alt="qodeless-logo" />
@@ -73,7 +72,6 @@ export function LoginPage() {
           </p>
         </div>
       </div>
-    </div>
     {openModal && <ModalCreateUser setOpenModal={setOpenModal}/>}
     </div>
   );

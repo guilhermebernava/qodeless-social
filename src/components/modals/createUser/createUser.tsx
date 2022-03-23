@@ -28,6 +28,7 @@ export function ModalCreateUser(props: ModalCreateUserProps) {
   }
 
   return (
+    <div className={styles.all}>
       <div className={styles.main}>
         <div className={styles.box}>
           <div className={styles.closeBox}>
@@ -77,6 +78,7 @@ export function ModalCreateUser(props: ModalCreateUserProps) {
             <button onClick={handleCreateUser}>Create</button>
           </form>
         </div>
+      </div>
       </div>
   );
 }
