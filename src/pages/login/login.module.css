@@ -156,21 +156,30 @@ button{
 
 @media(max-width:800px){
   .form > input{
-    width: 180%;
+    width: 150%;
   }
   .form > button{
-    width: 180%;
+    width: 150%;
+  }
+  .box{
+    height: 100vh;
   }
   
 }
 
 @media(min-height:1200px) {
   .box{
-    height: 20%;
+    height: 4%;
+  }
+  .form > input {
+    width: 150%;
+  }
+  .form > button {
+    width: 150%;
   }
 }
 
-@media(min-height:1000px) {
+@media(max-height:600px) {
   .box{
     height: 35%;
   }

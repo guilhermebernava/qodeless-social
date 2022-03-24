@@ -113,7 +113,7 @@
   background: #17ceff;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .form > input {
     width: 150%;
   }
@@ -125,15 +125,15 @@
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 1000px) {
   .form > input {
-    width: 100%;
+    width: 90%;
   }
   .form > button {
-    width: 100%;
+    width: 90%;
   }
   .box {
-    height: 75%;
+    height: 85%;
   }
   .close{
     width: 20%;
@@ -144,7 +144,7 @@
   .box {
     font-size: 30px;
     padding: 5%;
-    height: 65vh;
+    height: 70vh;
   }
   .form > button {
     margin-top: 20%;
