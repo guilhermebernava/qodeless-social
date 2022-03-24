@@ -150,6 +150,9 @@ button:hover {
     rgba(136, 82, 203, 0.5) 100%
   );
 }
+button{
+  font-size: 26px;
+}
 
 @media(max-width:800px){
   .form > input{
@@ -167,9 +170,9 @@ button:hover {
   }
 }
 
-@media(min-height:200px) {
+@media(min-height:1000px) {
   .box{
-    height: 38%;
+    height: 35%;
   }
 }
 
